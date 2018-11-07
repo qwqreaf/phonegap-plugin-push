@@ -78,6 +78,10 @@ public class PushHandlerActivity extends Activity implements PushConstants {
         if (extras != null) {
             Bundle originalExtras = extras.getBundle(PUSH_BUNDLE);
 
+            /** support open app */
+            if(originalExtras == null){
+                originalExtras = extras;
+            }
             originalExtras.putBoolean(FOREGROUND, false);
             originalExtras.putBoolean(COLDSTART, !isPushPluginActive);
             originalExtras.putBoolean(DISMISSED, extras.getBoolean(DISMISSED));
